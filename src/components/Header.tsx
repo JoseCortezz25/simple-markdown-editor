@@ -23,20 +23,6 @@ const GithubIcon = () => {
   )
 }
 
-interface ButtonProps {
-  children: React.ReactNode;
-  as: string;
-}
-
-const Button: React.FC<ButtonProps> = ({ children, as = 'button', ...props }) => {
-  const Element =
-    typeof as === 'string' ? as : React.Fragment;
-
-  // https://github.com/JoseCortezz25
-  return (
-    <Element {...props} className='cursor-pointer bg-tranparent transition-all duration-200 hover:scale-110 active:scale-100'>{children}</Element>
-  )
-}
 
 interface HeaderProps {
   onDownloadFile: () => void
@@ -47,18 +33,19 @@ const Header: React.FC<HeaderProps> = ({ onDownloadFile }) => {
     <header className='absolute h-[60px] bottom-7 mx-auto w-[45%] md:w-[20%] lg:w-[15%] rounded-full backdrop-blur-md text-white bg-gray-900 right-0 left-0'>
       <nav className='h-full flex items-center justify-around'>
         <div className='w-[30px] h-[30px]'>
-          <Button as='a' href="https://github.com/JoseCortezz25" target="_blank">
+          <a href="https://github.com/JoseCortezz25" target="_blank" rel="noopener noreferrer" className='block cursor-pointer bg-tranparent transition-all duration-200 hover:scale-110 active:scale-100'>
             <GithubIcon />
-          </Button>
+          </a>
         </div>
         <div className='w-[30px] h-[30px]'>
-          <Button onClick={() => onDownloadFile()} as='button'>
+          <button onClick={() => onDownloadFile()} className='cursor-pointer bg-tranparent transition-all duration-200 hover:scale-110 active:scale-100'>
             <DownloadIcon />
-          </Button>
+          </button >
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
+
 
 export { Header }
