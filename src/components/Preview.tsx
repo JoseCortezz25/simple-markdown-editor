@@ -22,9 +22,9 @@ const Preview: React.FC<PreviewProps> = ({ markdown }) => {
   
   const parsed = dompurify.sanitize(marked.parse(markdown) as string);
   return (
-    <section>
-      <div className="w-full bg-gray-900 p-3 text-lg text-gray-200 tracking-wider uppercase">Preview</div>
-      <div className='text-gray-200 p-4 prose prose-invert prose-headings:underline' dangerouslySetInnerHTML={{ __html: parsed }} />
+    <section className='overflow-scroll no-scrollbar'>
+      <div className="fixed w-full bg-gray-900 p-3 text-lg text-gray-200 tracking-wider uppercase">Preview</div>
+      <div className='text-gray-200 p-4 prose prose-invert prose-headings:underline mt-12' dangerouslySetInnerHTML={{ __html: parsed }} />
     </section>
   )
 }
